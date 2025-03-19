@@ -1,0 +1,6 @@
+<nav [ngClass]="isScreenWidthNormal == true ? 'navbar-normal' : 'navbar-small'">
+  <div class="navbar-links">
+    <button type="button" class="btn" (click)="goToHome()"><img src="assets/images/kniffel_logo.png" alt="Kniffel Logo"></button>
+    <button type="button" [ngClass]="isScreenWidthNormal == true ? 'normalLinks' : 'smallLinks'" id="leaderboardBtn" (click)="goToLeaderboard()">Leaderboard</button>
+  </div>
+</nav>

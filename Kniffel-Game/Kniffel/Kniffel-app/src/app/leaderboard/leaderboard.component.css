@@ -1,0 +1,67 @@
+
+.fullContent {
+  width: 100%;
+  padding-left: 50px;
+  background-color: white;;
+}
+
+.container-sm {
+  background-color: antiquewhite;
+  border: green solid 1px;
+  border-radius: 10px;
+  margin-top: 6%;
+  margin-bottom: 5%;
+  justify-content: center;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.leaderboard {
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  background-color: antiquewhite;
+  text-align: center;
+}
+
+.leaderboard table {
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+
+.leaderboard th {
+  padding: 8px;
+  text-align: center;
+  background-color: yellowgreen;
+  color: black;
+  font-size: 16px;
+  border: 2px solid darkgreen;
+  /* border-bottom: 2px solid darkgreen; */
+}
+
+.leaderboard td {
+  padding: 8px;
+  border: 3px solid #ddd;
+}
+
+.leaderboard td:nth-child(2) {
+  font-weight: bold;
+  color: teal;
+  width: 50%;
+}
+
+.leaderboard td:nth-child(1) {
+  width: 25%;
+}
+
+.markedPlayer {
+  background-color: yellow;
+}
+
+
+@media (max-width: 768.98px) {
+  .fullContent {
+    padding: 15px;
+  }
+}

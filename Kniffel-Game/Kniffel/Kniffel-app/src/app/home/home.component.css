@@ -1,0 +1,125 @@
+.fullContent {
+  width: 100%;
+  padding-left: 50px;
+  background-color: white;
+}
+
+.container-sm {
+  background-color: antiquewhite;
+  border: green solid 1px;
+  border-radius: 10px;
+  margin-top: 6%;
+  margin-bottom: 5%;
+  /* padding: 30px; */
+  justify-content: center;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+div.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: antiquewhite;
+
+}
+div.content p {
+  text-align: center;
+  font-size: large;
+  background-color: antiquewhite;
+}
+
+h2 {
+  background-color: antiquewhite;
+}
+
+div.pre-settings {
+  background-color: antiquewhite;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.play {
+  background-color: antiquewhite;
+  display: grid;
+  gap: 10px;
+  width: 60%;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: antiquewhite;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+}
+
+button.primary {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#resetBtn {
+  width: 50%;
+  background-color: red;
+  margin-left: 25%;
+}
+
+button.primary:hover {
+    background-color: #45a049;
+}
+
+button.rules {
+    width: 60%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+button.rules:hover {
+    background-color: #1976d2;
+}
+
+div.error-message {
+  background-color: antiquewhite;
+    color: red;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+label {
+  background-color: antiquewhite;
+}
+
+div {
+  background-color: antiquewhite;
+}
+
+@media (max-width: 768.98px) {
+  .fullContent {
+    padding: 15px;
+  }
+}

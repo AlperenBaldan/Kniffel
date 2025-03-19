@@ -1,0 +1,187 @@
+<div class="fullContext">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="gameContext">
+        <div class="points">
+          <table>
+            <thead>
+              <tr>
+                <th class="markOtherPlayer">Category</th>
+                <ng-container *ngFor="let player of players">
+                  <th [ngClass]="player == currentPlayer ? 'markCurrentPlayer' : 'markOtherPlayer'">{{ showPlayerName(player.name) }}</th>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of categories; let i = index">
+                <td>
+                  <div class="categories">
+                    <div class="categorieNames">
+                      <strong>{{ category.name }}</strong>
+                    </div>
+                    <ng-template #categoryHelp>{{ categoriesHelpText[i].name }}</ng-template>
+                    <div class="categoryInfo">
+                      <i class="fa fa-info-circle" [ngbTooltip]="categoryHelp"></i>
+                    </div>
+                  </div>
+                </td>
+                <ng-container *ngFor="let player of players">
+                  <td [ngSwitch]="category.name" >
+                    <div *ngSwitchCase="'Ones'">
+                      <span *ngIf="player.Ones != -1; else showTemporaryPoints">{{ player.Ones }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Twos'">
+                      <span *ngIf="player.Twos != -1; else showTemporaryPoints">{{ player.Twos }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Threes'">
+                      <span *ngIf="player.Threes != -1; else showTemporaryPoints">{{ player.Threes }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Fours'">
+                      <span *ngIf="player.Fours != -1; else showTemporaryPoints">{{ player.Fours }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Fives'">
+                      <span *ngIf="player.Fives != -1; else showTemporaryPoints">{{ player.Fives }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Sixes'">
+                      <span *ngIf="player.Sixes != -1; else showTemporaryPoints">{{ player.Sixes }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Top Sum'" class="backgroundcolor-lightgrey">{{ player.Top_Sum }}</div>
+                    <div *ngSwitchCase="'Bonus'" class="backgroundcolor-lightgrey">{{ player.Bonus }}</div>
+                    <div *ngSwitchCase="'Total Top'" class="backgroundcolor-lightgrey">{{ player.Total_Top }}</div>
+                    <div *ngSwitchCase="'Three of a Kind'">
+                      <span *ngIf="player.Three_of_a_Kind != -1; else showTemporaryPoints">{{ player.Three_of_a_Kind }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Four of a Kind'">
+                      <span *ngIf="player.Four_of_a_Kind != -1; else showTemporaryPoints">{{ player.Four_of_a_Kind }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Full House'">
+                      <span *ngIf="player.Full_House != -1; else showTemporaryPoints">{{ player.Full_House }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Small Street'">
+                      <span *ngIf="player.Small_Street != -1; else showTemporaryPoints">{{ player.Small_Street }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Large Street'">
+                      <span *ngIf="player.Large_Street != -1; else showTemporaryPoints">{{ player.Large_Street }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Kniffel'">
+                      <span *ngIf="player.Kniffel != -1; else showTemporaryPoints">{{ player.Kniffel }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Chance'">
+                      <span *ngIf="player.Chance != -1; else showTemporaryPoints">{{ player.Chance }}</span>
+                    </div>
+                    <div *ngSwitchCase="'Bottom Sum'" class="backgroundcolor-lightgrey">{{ player.Bottom_Sum }}</div>
+                    <div *ngSwitchCase="'Total Sum'" class="backgroundcolor-lightgrey">{{ player.Total_Sum }}</div>
+
+                    <!-- ng templates -->
+                    <ng-template #showTemporaryPoints>
+                      <span *ngIf="currentPlayer === player; else noPoints">
+                        <div class="possiblePoints" (click)="validator(player, category.name)">
+                          {{ showHoverPoints(category.name) }}
+                        </div>
+                      </span>
+                    </ng-template>
+
+                    <ng-template #noPoints >
+                      <div (click)="validator(player, category.name)"></div>
+                    </ng-template>
+
+                  </td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cubes">
+          <div>
+            <p>Round {{ round }} / 13</p>
+          </div>
+          <div>
+            <div class="buttons">
+              <div class="rotated">
+                <img
+                  [class.rotate]="rotateCubes[0]"
+                  [src]="cubeLinks[0]"
+                  alt="cube1"
+                  (click)="cubeClicked(1)"
+                  [ngStyle]="{
+                    transform: cube1.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                  }"
+                />
+              </div>
+              <div class="rotated">
+                <img
+                  [class.rotate]="rotateCubes[1]"
+                  [src]="cubeLinks[1]"
+                  alt="cube2"
+                  (click)="cubeClicked(2)"
+                  [ngStyle]="{
+                    transform: cube2.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                  }"
+                />
+              </div>
+              <div class="rotated">
+                <img
+                  [class.rotate]="rotateCubes[2]"
+                  [src]="cubeLinks[2]"
+                  alt="cube3"
+                  (click)="cubeClicked(3)"
+                  [ngStyle]="{
+                    transform: cube3.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                  }"
+                />
+              </div>
+              <div class="rotated">
+                <img
+                  [class.rotate]="rotateCubes[3]"
+                  [src]="cubeLinks[3]"
+                  alt="cube4"
+                  (click)="cubeClicked(4)"
+                  [ngStyle]="{
+                    transform: cube4.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                  }"
+                />
+              </div>
+              <div class="rotated">
+                <img
+                  [class.rotate]="rotateCubes[4]"
+                  [src]="cubeLinks[4]"
+                  alt="cube5"
+                  (click)="cubeClicked(5)"
+                  [ngStyle]="{
+                    transform: cube5.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                  }"
+                />
+              </div>
+            </div>
+            <button type="button" class="btn btn-info" id="rollCube" (click)="roll()">
+              Roll
+            </button>
+            <div *ngIf="errorMessage" class="error-message">
+              {{ errorMessage }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="sessionLeaderboardContext">
+        <table>
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Player</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let player of sessionLeaderboard; let i = index">
+              <td>{{ i + 1 }}.</td>
+              <td>{{ player.name }}</td>
+              <td>{{ player.Total_Sum }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

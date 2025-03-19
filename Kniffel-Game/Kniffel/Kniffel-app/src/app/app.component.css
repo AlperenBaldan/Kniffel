@@ -1,0 +1,13 @@
+div {
+  height: max-content;
+}
+
+.navbar {
+  background-color: antiquewhite;
+}
+
+.sidebar {
+  box-shadow: none;
+  width: 50px;
+}
+
