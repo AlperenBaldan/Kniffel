@@ -1,0 +1,362 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EB0456C2-777A-422E-AE35-24F7F004D974}|Data\\Data.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\data\\repositories\\playerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB0456C2-777A-422E-AE35-24F7F004D974}|Data\\Data.csproj|solutionrelative:data\\repositories\\playerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|solutionrelative:models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\webapi\\controllers\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\webapi\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826B7278-76B6-4ABE-B5AB-BBCE45E7AC15}|Business\\Business.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\business\\services\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826B7278-76B6-4ABE-B5AB-BBCE45E7AC15}|Business\\Business.csproj|solutionrelative:business\\services\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{826B7278-76B6-4ABE-B5AB-BBCE45E7AC15}|Business\\Business.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\business\\interfaces\\iplayerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{826B7278-76B6-4ABE-B5AB-BBCE45E7AC15}|Business\\Business.csproj|solutionrelative:business\\interfaces\\iplayerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99A0BDC5-CE20-4E9D-B9FE-9CE6D7DAEE7A}|DataContracts\\DataContracts.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\datacontracts\\interfaces\\iplayerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99A0BDC5-CE20-4E9D-B9FE-9CE6D7DAEE7A}|DataContracts\\DataContracts.csproj|solutionrelative:datacontracts\\interfaces\\iplayerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99A0BDC5-CE20-4E9D-B9FE-9CE6D7DAEE7A}|DataContracts\\DataContracts.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\datacontracts\\interfaces\\ileaderboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99A0BDC5-CE20-4E9D-B9FE-9CE6D7DAEE7A}|DataContracts\\DataContracts.csproj|solutionrelative:datacontracts\\interfaces\\ileaderboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\models\\leaderboardentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|solutionrelative:models\\leaderboardentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\models\\dtos\\leaderboardentrydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|solutionrelative:models\\dtos\\leaderboardentrydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB0456C2-777A-422E-AE35-24F7F004D974}|Data\\Data.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\data\\migrations\\20250318121711_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB0456C2-777A-422E-AE35-24F7F004D974}|Data\\Data.csproj|solutionrelative:data\\migrations\\20250318121711_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\webapi\\webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{158915A6-EA41-4329-9F07-D65C9F2EC1D3}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\models\\dtos\\cubedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|solutionrelative:models\\dtos\\cubedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\models\\dtos\\playerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|solutionrelative:models\\dtos\\playerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB0456C2-777A-422E-AE35-24F7F004D974}|Data\\Data.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB0456C2-777A-422E-AE35-24F7F004D974}|Data\\Data.csproj|solutionrelative:data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\models\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|solutionrelative:models\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\models\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|solutionrelative:models\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|c:\\projects\\kniffel-game\\backend\\webapi\\models\\dtos\\gamedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8922361F-F173-4767-927C-6F560EA5F685}|Models\\Models.csproj|solutionrelative:models\\dtos\\gamedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 19,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameController.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\Controllers\\GameController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\GameController.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\Controllers\\GameController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\GameController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:41:15.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerService.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Business\\Services\\PlayerService.cs",
+              "RelativeDocumentMoniker": "Business\\Services\\PlayerService.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Business\\Services\\PlayerService.cs",
+              "RelativeToolTip": "Business\\Services\\PlayerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:38:58.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IPlayerService.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Business\\Interfaces\\IPlayerService.cs",
+              "RelativeDocumentMoniker": "Business\\Interfaces\\IPlayerService.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Business\\Interfaces\\IPlayerService.cs",
+              "RelativeToolTip": "Business\\Interfaces\\IPlayerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:38:35.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ILeaderboardRepository.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\Interfaces\\ILeaderboardRepository.cs",
+              "RelativeDocumentMoniker": "DataContracts\\Interfaces\\ILeaderboardRepository.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\Interfaces\\ILeaderboardRepository.cs",
+              "RelativeToolTip": "DataContracts\\Interfaces\\ILeaderboardRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:32:05.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IPlayerRepository.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\Interfaces\\IPlayerRepository.cs",
+              "RelativeDocumentMoniker": "DataContracts\\Interfaces\\IPlayerRepository.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\Interfaces\\IPlayerRepository.cs",
+              "RelativeToolTip": "DataContracts\\Interfaces\\IPlayerRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:32:00.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "20250318121711_initial.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\Migrations\\20250318121711_initial.cs",
+              "RelativeDocumentMoniker": "Data\\Migrations\\20250318121711_initial.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\Migrations\\20250318121711_initial.cs",
+              "RelativeToolTip": "Data\\Migrations\\20250318121711_initial.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAowEQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T12:17:11.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WebAPI.csproj",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\WebAPI.csproj",
+              "RelativeDocumentMoniker": "WebAPI\\WebAPI.csproj",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\WebAPI.csproj",
+              "RelativeToolTip": "WebAPI\\WebAPI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-18T10:52:12.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "WebAPI\\appsettings.json",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\appsettings.json",
+              "RelativeToolTip": "WebAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-18T10:44:35.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\Program.cs",
+              "RelativeToolTip": "WebAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T09:52:14.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "GameDTO.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\DTOs\\GameDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\GameDTO.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\DTOs\\GameDTO.cs",
+              "RelativeToolTip": "Models\\DTOs\\GameDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T09:31:39.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Game.cs",
+              "RelativeDocumentMoniker": "Models\\Game.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Game.cs",
+              "RelativeToolTip": "Models\\Game.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T09:26:59.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DatabaseContext.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\DatabaseContext.cs",
+              "RelativeDocumentMoniker": "Data\\DatabaseContext.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\DatabaseContext.cs",
+              "RelativeToolTip": "Data\\DatabaseContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T09:10:50.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LeaderboardEntryDTO.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\DTOs\\LeaderboardEntryDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\LeaderboardEntryDTO.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\DTOs\\LeaderboardEntryDTO.cs",
+              "RelativeToolTip": "Models\\DTOs\\LeaderboardEntryDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T09:03:40.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LeaderboardEntry.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\LeaderboardEntry.cs",
+              "RelativeDocumentMoniker": "Models\\LeaderboardEntry.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\LeaderboardEntry.cs",
+              "RelativeToolTip": "Models\\LeaderboardEntry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T09:01:56.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Cube.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Cube.cs",
+              "RelativeDocumentMoniker": "Models\\Cube.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Cube.cs",
+              "RelativeToolTip": "Models\\Cube.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T07:40:53.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PlayerDTO.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\DTOs\\PlayerDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\PlayerDTO.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\DTOs\\PlayerDTO.cs",
+              "RelativeToolTip": "Models\\DTOs\\PlayerDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T06:57:06.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Player.cs",
+              "RelativeDocumentMoniker": "Models\\Player.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Player.cs",
+              "RelativeToolTip": "Models\\Player.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T06:56:41.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerRepository.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\Repositories\\PlayerRepository.cs",
+              "RelativeDocumentMoniker": "Data\\Repositories\\PlayerRepository.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\Repositories\\PlayerRepository.cs",
+              "RelativeToolTip": "Data\\Repositories\\PlayerRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T06:35:49.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\Controllers\\PlayerController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\PlayerController.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\WebAPI\\Controllers\\PlayerController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\PlayerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T06:34:05.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CubeDTO.cs",
+              "DocumentMoniker": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\DTOs\\CubeDTO.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\CubeDTO.cs",
+              "ToolTip": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\DTOs\\CubeDTO.cs",
+              "RelativeToolTip": "Models\\DTOs\\CubeDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T05:58:13.429Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

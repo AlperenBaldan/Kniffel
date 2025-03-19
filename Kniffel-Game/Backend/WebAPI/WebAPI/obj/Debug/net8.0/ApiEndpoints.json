@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "WebAPI.Controllers.PlayerController",
+    "Method": "InsertDummyData",
+    "RelativePath": "api/Player",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
