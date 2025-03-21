@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GameService } from '../service/game/game.service';
 import { CubeService } from '../service/cube/cube.service';
 import { LeaderboardService } from '../service/leaderboard/leaderboard.service';
 import { MatButtonModule } from '@angular/material/button';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { Player } from '../../../Models/Player';
-import { Cube } from '../../../Models/Cube';
+import { Player } from '../../Models/Player';
+import { Cube } from '../../Models/Cube';
 
 
 @Component({
@@ -23,6 +23,11 @@ export class GameComponent implements OnInit {
     private cubeService: CubeService,
     private leaderboardService: LeaderboardService
   ) {}
+
+  private readonly maxRolls = 3;
+  private readonly lastRound = 13;
+  private readonly minPointsForBonus = 63;
+  private readonly bonusPoints = 35;
 
   public cubeLinks: string[] = [
     'assets/images/dice1.png',
@@ -74,27 +79,17 @@ export class GameComponent implements OnInit {
     { name: 'Total = Total Top + Bottom Sum.' },
   ];
 
-  private player1: Player = new Player('');
-  private player2: Player = new Player('');
-  private player3: Player = new Player('');
-  private player4: Player = new Player('');
   public players: Player[] = [];
   public currentPlayer: Player = new Player('');
-  private numberOfPlayers: number = 1;
   public rotateCubes: boolean[] = [];
   private rolled: boolean = false;
 
-  public cube1: Cube = new Cube(0, false);
-  public cube2: Cube = new Cube(0, false);
-  public cube3: Cube = new Cube(0, false);
-  public cube4: Cube = new Cube(0, false);
-  public cube5: Cube = new Cube(0, false);
   public cubes: Cube[] = [
-    this.cube1,
-    this.cube2,
-    this.cube3,
-    this.cube4,
-    this.cube5,
+    { cubeValue: 0, isCubeClicked: false }, 
+    { cubeValue: 0, isCubeClicked: false }, 
+    { cubeValue: 0, isCubeClicked: false }, 
+    { cubeValue: 0, isCubeClicked: false }, 
+    { cubeValue: 0, isCubeClicked: false }
   ];
 
   public round: number = 0;
@@ -105,27 +100,27 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetGame();
-    this.numberOfPlayers = this.gameService.getNumberOfPlayers();
-    for (let i = 0; i < this.numberOfPlayers; i++) {
-      if (i === 0) {
-        this.player1.name = this.gameService.getPlayerName(i);
-        this.players.push(this.player1);
-      }
-      if (i === 1) {
-        this.player2.name = this.gameService.getPlayerName(i);
-        this.players.push(this.player2);
-      }
-      if (i === 2) {
-        this.player3.name = this.gameService.getPlayerName(i);
-        this.players.push(this.player3);
-      }
-      if (i === 3) {
-        this.player4.name = this.gameService.getPlayerName(i);
-        this.players.push(this.player4);
-      }
+    let numberOfPlayers = this.gameService.getNumberOfPlayers();
+    
+    if (numberOfPlayers >= 1) {
+      let player1: Player = new Player(this.gameService.getPlayerName(1));
+      this.players.push(player1);
     }
+    if (numberOfPlayers >= 2) {
+      let player2: Player = new Player(this.gameService.getPlayerName(2));
+      this.players.push(player2);
+    }
+    if (numberOfPlayers >= 3) {
+      let player3: Player = new Player(this.gameService.getPlayerName(3));
+      this.players.push(player3);
+    }
+    if (numberOfPlayers >= 4) {
+      let player4: Player = new Player(this.gameService.getPlayerName(4));
+      this.players.push(player4);
+    }
+    console.log(this.players);
     this.sessionLeaderboard = [...this.players];
-    this.currentPlayer = this.player1;
+    this.currentPlayer = this.players[0];
   }
 
   public showPlayerName(name: string): string {
@@ -138,7 +133,6 @@ export class GameComponent implements OnInit {
     } else {
       if (this.currentPlayer === player) {
         if (this.isCategoryEmpty(player, detail)) {
-          this.updateCubes();
           switch (detail) {
             case 'Ones':
               player.Ones = this.gameService.validator(detail, this.cubes);
@@ -209,8 +203,8 @@ export class GameComponent implements OnInit {
               break;
           }
 
-          if (player.Top_Sum >= 63) {
-            player.Bonus = 35;
+          if (player.Top_Sum >= this.minPointsForBonus) {
+            player.Bonus = this.bonusPoints;
           }
           player.Total_Top = player.Top_Sum + player.Bonus;
           player.Total_Sum = player.Bottom_Sum + player.Total_Top;
@@ -219,10 +213,9 @@ export class GameComponent implements OnInit {
 
           this.resetCubes();
           this.cubeLinks = this.cubeService.resetCubeLinks();
-          this.updateRound();
           this.updateCurrentPlayer();
           this.rolled = false;
-          if (this.round == 13) {
+          if (this.round === this.lastRound) {
             this.gameFinished();
           }
         }
@@ -237,43 +230,32 @@ export class GameComponent implements OnInit {
   }
 
   private updateCurrentPlayer(): void {
-    for (let i = 0; i < this.players.length ; i++) {
-      if (this.currentPlayer == this.players[this.players.length - 1]) {
-        this.currentPlayer = this.player1;
-        this.round++;
-      } else if (this.currentPlayer == this.players[i]) {
-        this.currentPlayer = this.players[i + 1];
-        return;
-      }
+    if (this.currentPlayer === this.players[this.players.length - 1]) 
+    {
+      this.currentPlayer = this.players[0];
+      this.round++;
     }
-  }
-
-  private updateRound(): void {
-    // if (this.currentPlayer === this.players[this.numberOfPlayers - 1]) {
-    //   this.round++;
-    // }
-    // this.round++;
+    else 
+    {
+      this.currentPlayer = this.players[this.players.findIndex(player => player === this.currentPlayer) + 1];
+    }
+    console.log(this.currentPlayer);
   }
 
   public showHoverPoints(detail: string): number {
     return this.gameService.validator(detail, this.cubes);
   }
-
+  
   public roll(): void {
     this.rolled = true;
-    if (this.rolledNumber >= 3) {
+    if (this.rolledNumber >= this.maxRolls) {
       this.errorMessage = 'Du hast bereits 3 Mal geworfen!';
     } else {
-      this.updateCubes();
-      let newCubevalues = this.cubeService.roll(this.cubes);
       for (let i = 0; i < this.cubes.length; i++) {
         if (!this.cubes[i].isCubeClicked) {
-          this.cubes[i].cubeValue = newCubevalues[i].cubeValue;
-          this.cubeLinks[i] = this.cubeService.getCubeLink(
-            newCubevalues[i].cubeValue
-          );
+          this.cubes[i].cubeValue = this.cubeService.roll();
+          this.cubeLinks[i] = this.cubeService.getCubeLink(this.cubes[i].cubeValue);
           this.rotateCubes[i] = true;
-          // Nach 3 Sekunden die Drehung stoppen
           setTimeout(() => (this.rotateCubes[i] = false), 500);
         }
       }
@@ -282,59 +264,43 @@ export class GameComponent implements OnInit {
     }
   }
 
-  public cubeClicked(cubeNumber: number): void {
-    if (cubeNumber == 1) {
-      this.cube1.isCubeClicked
-        ? (this.cube1.isCubeClicked = false)
-        : (this.cube1.isCubeClicked = true);
-    } else if (cubeNumber == 2) {
-      this.cube2.isCubeClicked
-        ? (this.cube2.isCubeClicked = false)
-        : (this.cube2.isCubeClicked = true);
-    } else if (cubeNumber == 3) {
-      this.cube3.isCubeClicked
-        ? (this.cube3.isCubeClicked = false)
-        : (this.cube3.isCubeClicked = true);
-    } else if (cubeNumber == 4) {
-      this.cube4.isCubeClicked
-        ? (this.cube4.isCubeClicked = false)
-        : (this.cube4.isCubeClicked = true);
-    } else if (cubeNumber == 5) {
-      this.cube5.isCubeClicked
-        ? (this.cube5.isCubeClicked = false)
-        : (this.cube5.isCubeClicked = true);
-    }
-    console.log('clicked cube with number ' + cubeNumber);
+  
+
+  public cube1Clicked(): void {
+    this.cubes[0].isCubeClicked = !this.cubes[0].isCubeClicked;
   }
 
-  private updateCubes(): void {
-    this.cubes = [this.cube1, this.cube2, this.cube3, this.cube4, this.cube5];
+  public cube2Clicked(): void {
+    this.cubes[1].isCubeClicked = !this.cubes[1].isCubeClicked;
   }
+
+  public cube3Clicked(): void {
+    this.cubes[2].isCubeClicked = !this.cubes[2].isCubeClicked;
+  }
+
+  public cube4Clicked(): void {
+    this.cubes[3].isCubeClicked = !this.cubes[3].isCubeClicked;
+  }
+
+  public cube5Clicked(): void {
+    this.cubes[4].isCubeClicked = !this.cubes[4].isCubeClicked;
+  }
+
 
   private resetCubes(): void {
     this.rotateCubes = [false, false, false, false, false];
-    this.cube1.cubeValue = 0;
-    this.cube2.cubeValue = 0;
-    this.cube3.cubeValue = 0;
-    this.cube4.cubeValue = 0;
-    this.cube5.cubeValue = 0;
-    this.cube1.isCubeClicked = false;
-    this.cube2.isCubeClicked = false;
-    this.cube3.isCubeClicked = false;
-    this.cube4.isCubeClicked = false;
-    this.cube5.isCubeClicked = false;
-    this.cubes = [this.cube1, this.cube2, this.cube3, this.cube4, this.cube5];
+    this.cubes = [
+      { cubeValue: 0, isCubeClicked: false }, 
+      { cubeValue: 0, isCubeClicked: false }, 
+      { cubeValue: 0, isCubeClicked: false }, 
+      { cubeValue: 0, isCubeClicked: false }, 
+      { cubeValue: 0, isCubeClicked: false }];
     this.rolledNumber = 0;
     this.errorMessage = '';
   }
 
   private resetPlayer(): void {
-    this.player1 = new Player('');
-    this.player2 = new Player('');
-    this.player3 = new Player('');
-    this.player4 = new Player('');
     this.players = [];
-    this.numberOfPlayers = 1;
   }
 
   private gameFinished(): void {

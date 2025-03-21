@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Router } from '@angular/router';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { SidebarComponent } from './sidebar/sidebar.component';
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Player } from '../../../../Models/Player';
 
 @Injectable({
   providedIn: 'root',
@@ -7,51 +6,37 @@ import { Player } from '../../../../Models/Player';
 export class LeaderboardService {
   private leaderboard: { playerName: string; score: number }[] = [];
   private topLeaderboard: { playerName: string; score: number }[] = [];
+  private readonly maxNameLength = 12;
+  private readonly emptyname = '';
 
   constructor() {}
 
   public startGameConditions(
     numberofPlayers: number,
-    playerName1: string,
-    playerName2: string,
-    playerName3: string,
-    playerName4: string
+    playerNames: string[]
   ): string {
     this.loadleaderboard();
+    for (let i = 0; i < playerNames.length; i++) {
+      if (playerNames[i] === this.emptyname) 
+      {
+        return 'Please enter a name for Player ' + i + '!';
+      }
+      if (this.isNameInLeaderboard(playerNames[i])) {
+        return 'Player with name ' + playerNames[i] + ' already exists!';
+      }
+      playerNames.
+    }
+
+
     switch (numberofPlayers) {
-      case 0:
-        return 'Please select the number of players!';
-      case 1:
-        if (playerName1 === '') {
-          return 'Please enter a name for Player 1!';
-        }
-        if (this.isNameInLeaderboard(playerName1)) {
-          return 'Player with name ' + playerName1 + ' already exists!';
-        }
-        break;
+  
       case 2:
-        if (playerName1 === '' || playerName2 === '') {
-          return 'Please enter a name for all the players!';
-        }
-        if (this.isNameInLeaderboard(playerName1)) {
-          return 'Player with name ' + playerName1 + ' already exists!';
-        } else if (this.isNameInLeaderboard(playerName2)) {
-          return 'Player with name ' + playerName2 + ' already exists!';
-        } else if (playerName1 === playerName2) {
+       if (playerName1 === playerName2) {
           return "Players cant't have the same name.";
         }
         break;
       case 3:
-        if (playerName1 === '' || playerName2 === '' || playerName3 === '') {
-          return 'Please enter a name for all the players!';
-        }
-        if (this.isNameInLeaderboard(playerName1)) {
-          return 'Player with name ' + playerName1 + ' already exists!';
-        } else if (this.isNameInLeaderboard(playerName2)) {
-          return 'Player with name ' + playerName2 + ' already exists!';
-        } else if (this.isNameInLeaderboard(playerName3)) {
-          return 'Player with name ' + playerName3 + ' already exists!';
-        } else if (
+        if (
           playerName1 === playerName2 ||
           playerName1 === playerName3 ||
           playerName2 === playerName3
@@ -61,22 +46,6 @@ export class LeaderboardService {
         break;
       case 4:
         if (
-          playerName1 === '' ||
-          playerName2 === '' ||
-          playerName3 === '' ||
-          playerName4 === ''
-        ) {
-          return 'Please enter a name for all the players!';
-        }
-        if (this.isNameInLeaderboard(playerName1)) {
-          return 'Player with name ' + playerName1 + ' already exists!';
-        } else if (this.isNameInLeaderboard(playerName2)) {
-          return 'Player with name ' + playerName2 + ' already exists!';
-        } else if (this.isNameInLeaderboard(playerName3)) {
-          return 'Player with name ' + playerName3 + ' already exists!';
-        } else if (this.isNameInLeaderboard(playerName4)) {
-          return 'Player with name ' + playerName4 + ' already exists!';
-        } else if (
           playerName1 === playerName2 ||
           playerName1 === playerName3 ||
           playerName1 === playerName4 ||
@@ -89,10 +58,10 @@ export class LeaderboardService {
         break;
     }
     if (
-      playerName1.length > 12 ||
-      playerName2.length > 12 ||
-      playerName3.length > 12 ||
-      playerName4.length > 12
+      playerName1.length > this.maxNameLength ||
+      playerName2.length > this.maxNameLength ||
+      playerName3.length > this.maxNameLength ||
+      playerName4.length > this.maxNameLength
     ) {
       return "Player name is too long. Total length can't exceed 12 characters.";
     }

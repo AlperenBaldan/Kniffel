@@ -20,6 +20,7 @@ export class HomeComponent {
   public numberofPlayers: number = 0;
   public numberOfPlayerSelected = false;
   public errorMessage: string = '';
+  private readonly emptyErrorMessage = '';
 
   constructor(
     private leaderboardService: LeaderboardService,
@@ -35,12 +36,12 @@ export class HomeComponent {
   private startGameConditions(): boolean {
     this.errorMessage = this.leaderboardService.startGameConditions(
       this.numberofPlayers,
-      this.playerName1,
+      [this.playerName1,
       this.playerName2,
       this.playerName3,
-      this.playerName4
+      this.playerName4]
     );
-    if (this.errorMessage == '') {
+    if (this.errorMessage === this.emptyErrorMessage) {
       return true;
     }
     return false;

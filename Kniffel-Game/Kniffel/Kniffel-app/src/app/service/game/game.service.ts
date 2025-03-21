@@ -1,16 +1,22 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Player } from '../../../../Models/Player';
-import { CubeService } from '../cube/cube.service';
-import { Cube } from '../../../../Models/Cube';
+import { Player } from '../../../Models/Player';
+import { Cube } from '../../../Models/Cube';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
   private playerList: string[] = [];
+  private readonly maxShowablePlayerCharacters: number = 5;
+  private readonly zeroPoints = 0;
+  private readonly fullHousePoints = 25;
+  private readonly smallStreetPoints = 30;
+  private readonly largeStreetPoints = 40;
+  private readonly kniffelPoints = 50;
 
-  constructor(private cubeService: CubeService, private router: Router) {}
+
+  constructor(private router: Router) {}
 
   public startGame(playerlist: string[]): void {
     this.playerList = playerlist;
@@ -18,7 +24,7 @@ export class GameService {
   }
 
   public getPlayerName(index: number): string {
-    return this.playerList[index];
+    return this.playerList[index - 1];
   }
 
   getPlayerList(): string[] {
@@ -83,7 +89,7 @@ export class GameService {
   }
 
   public showPlayerName(name: string): string {
-    if (name.length > 5) {
+    if (name.length > this.maxShowablePlayerCharacters) {
       name = name.substring(0, 5) + '..';
     }
     return name;
@@ -132,7 +138,7 @@ export class GameService {
         points = player.Chance;
         break;
     }
-    if (points == -1) {
+    if (points === -1) {
       return true;
     } else {
       return false;
@@ -150,45 +156,45 @@ export class GameService {
   }
 
   private returnOnes(cubeValues: number[]): number {
-    return cubeValues.filter((value) => value == 1).length;
+    return cubeValues.filter((value) => value === 1).length;
   }
 
   private returnTwos(cubeValues: number[]): number {
-    return 2 * cubeValues.filter((value) => value == 2).length;
+    return 2 * cubeValues.filter((value) => value === 2).length;
   }
 
   private returnThrees(cubeValues: number[]): number {
-    return 3 * cubeValues.filter((value) => value == 3).length;
+    return 3 * cubeValues.filter((value) => value === 3).length;
   }
 
   private returnFours(cubeValues: number[]): number {
-    return 4 * cubeValues.filter((value) => value == 4).length;
+    return 4 * cubeValues.filter((value) => value === 4).length;
   }
 
   private returnFives(cubeValues: number[]): number {
-    return 5 * cubeValues.filter((value) => value == 5).length;
+    return 5 * cubeValues.filter((value) => value === 5).length;
   }
 
   private returnSixes(cubeValues: number[]): number {
-    return 6 * cubeValues.filter((value) => value == 6).length;
+    return 6 * cubeValues.filter((value) => value === 6).length;
   }
 
   private returnThreeOfAKindPoints(cubeValues: number[]): number {
     let duplicate = cubeValues.some(
-      (num, i, arr) => arr.filter((item) => item == num).length >= 3
+      (num, i, arr) => arr.filter((item) => item === num).length >= 3
     );
     if (duplicate) {
       return this.cubeSumm(cubeValues);
     } else {
-      return 0;
+      return this.zeroPoints;
     }
   }
 
   private returnFourOfAKindPoints(cubeValues: number[]): number {
     let duplicate = cubeValues.some(
-      (num, i, arr) => arr.filter((item) => item == num).length >= 4
+      (num, i, arr) => arr.filter((item) => item === num).length >= 4
     );
-    return duplicate ? this.cubeSumm(cubeValues) : 0;
+    return duplicate ? this.cubeSumm(cubeValues) : this.zeroPoints;
   }
 
   private returnFullHousePoints(cubeValues: number[]): number {
@@ -197,7 +203,7 @@ export class GameService {
       value,
       cubeValues.filter((str) => str === value).length,
     ]);
-    return duplicates.length == 2 ? 25 : 0;
+    return duplicates.length === 2 ? this.fullHousePoints : this.zeroPoints;
   }
 
   private returnSmallStreetPoints(cubeValues: number[]): number {
@@ -205,35 +211,37 @@ export class GameService {
     cubeValues = [...new Set(cubeValues)];
     for (let i = 0; i < cubeValues.length - 3; i++) {
       if (
-        cubeValues[i + 1] == cubeValues[i] + 1 &&
-        cubeValues[i + 2] == cubeValues[i] + 2 &&
-        cubeValues[i + 3] == cubeValues[i] + 3
+        cubeValues[i + 1] === cubeValues[i] + 1 &&
+        cubeValues[i + 2] === cubeValues[i] + 2 &&
+        cubeValues[i + 3] === cubeValues[i] + 3
       ) {
-        return 30;
+        return this.smallStreetPoints;
       }
     }
-    return 0;
+    return this.zeroPoints;
   }
 
   private returnLargeStreetPoints(cubeValues: number[]): number {
     cubeValues.sort((a, b) => a - b);
-    return cubeValues[1] == cubeValues[0] + 1 &&
-      cubeValues[2] == cubeValues[0] + 2 &&
-      cubeValues[3] == cubeValues[0] + 3 &&
-      cubeValues[4] == cubeValues[0] + 4
-      ? 40
-      : 0;
+    return cubeValues[1] === cubeValues[0] + 1 &&
+      cubeValues[2] === cubeValues[0] + 2 &&
+      cubeValues[3] === cubeValues[0] + 3 &&
+      cubeValues[4] === cubeValues[0] + 4
+      ? this.largeStreetPoints
+      : this.zeroPoints;
   }
 
   private returnKniffelPoints(cubeValues: number[]): number {
     return cubeValues[0] != 0 &&
-      cubeValues[0] == cubeValues[1] &&
-      cubeValues[1] == cubeValues[2] &&
-      cubeValues[2] == cubeValues[3] &&
-      cubeValues[3] == cubeValues[4]
-      ? 50
-      : 0;
+      cubeValues[0] === cubeValues[1] &&
+      cubeValues[1] === cubeValues[2] &&
+      cubeValues[2] === cubeValues[3] &&
+      cubeValues[3] === cubeValues[4]
+      ? this.kniffelPoints
+      : this.zeroPoints;
   }
+
+  
 
   public gameFinished(): void {
     this.router.navigate(['/leaderboard']);

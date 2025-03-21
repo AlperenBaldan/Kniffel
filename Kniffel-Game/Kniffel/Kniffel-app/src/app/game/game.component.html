@@ -8,11 +8,15 @@
               <tr>
                 <th class="markOtherPlayer">Category</th>
                 <ng-container *ngFor="let player of players">
-                  <th [ngClass]="player == currentPlayer ? 'markCurrentPlayer' : 'markOtherPlayer'">{{ showPlayerName(player.name) }}</th>
+                  <th [ngClass]="player === currentPlayer ? 'markCurrentPlayer' : 'markOtherPlayer'">{{ showPlayerName(player.name) }}</th>
                 </ng-container>
               </tr>
             </thead>
             <tbody>
+
+
+
+
               <tr *ngFor="let category of categories; let i = index">
                 <td>
                   <div class="categories">
@@ -25,6 +29,9 @@
                     </div>
                   </div>
                 </td>
+
+
+                
                 <ng-container *ngFor="let player of players">
                   <td [ngSwitch]="category.name" >
                     <div *ngSwitchCase="'Ones'">
@@ -45,9 +52,9 @@
                     <div *ngSwitchCase="'Sixes'">
                       <span *ngIf="player.Sixes != -1; else showTemporaryPoints">{{ player.Sixes }}</span>
                     </div>
-                    <div *ngSwitchCase="'Top Sum'" class="backgroundcolor-lightgrey">{{ player.Top_Sum }}</div>
-                    <div *ngSwitchCase="'Bonus'" class="backgroundcolor-lightgrey">{{ player.Bonus }}</div>
-                    <div *ngSwitchCase="'Total Top'" class="backgroundcolor-lightgrey">{{ player.Total_Top }}</div>
+                    <div *ngSwitchCase="'Top Sum'" class="sums">{{ player.Top_Sum }}</div>
+                    <div *ngSwitchCase="'Bonus'" class="sums">{{ player.Bonus }}</div>
+                    <div *ngSwitchCase="'Total Top'" class="sums">{{ player.Total_Top }}</div>
                     <div *ngSwitchCase="'Three of a Kind'">
                       <span *ngIf="player.Three_of_a_Kind != -1; else showTemporaryPoints">{{ player.Three_of_a_Kind }}</span>
                     </div>
@@ -69,8 +76,8 @@
                     <div *ngSwitchCase="'Chance'">
                       <span *ngIf="player.Chance != -1; else showTemporaryPoints">{{ player.Chance }}</span>
                     </div>
-                    <div *ngSwitchCase="'Bottom Sum'" class="backgroundcolor-lightgrey">{{ player.Bottom_Sum }}</div>
-                    <div *ngSwitchCase="'Total Sum'" class="backgroundcolor-lightgrey">{{ player.Total_Sum }}</div>
+                    <div *ngSwitchCase="'Bottom Sum'" class="sums">{{ player.Bottom_Sum }}</div>
+                    <div *ngSwitchCase="'Total Sum'" class="sums">{{ player.Total_Sum }}</div>
 
                     <!-- ng templates -->
                     <ng-template #showTemporaryPoints>
@@ -102,9 +109,9 @@
                   [class.rotate]="rotateCubes[0]"
                   [src]="cubeLinks[0]"
                   alt="cube1"
-                  (click)="cubeClicked(1)"
+                  (click)="cube1Clicked()"
                   [ngStyle]="{
-                    transform: cube1.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                    transform: cubes[0].isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
                   }"
                 />
               </div>
@@ -113,9 +120,9 @@
                   [class.rotate]="rotateCubes[1]"
                   [src]="cubeLinks[1]"
                   alt="cube2"
-                  (click)="cubeClicked(2)"
+                  (click)="cube2Clicked()"
                   [ngStyle]="{
-                    transform: cube2.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                    transform: cubes[1].isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
                   }"
                 />
               </div>
@@ -124,9 +131,9 @@
                   [class.rotate]="rotateCubes[2]"
                   [src]="cubeLinks[2]"
                   alt="cube3"
-                  (click)="cubeClicked(3)"
+                  (click)="cube3Clicked()"
                   [ngStyle]="{
-                    transform: cube3.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                    transform: cubes[2].isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
                   }"
                 />
               </div>
@@ -135,9 +142,9 @@
                   [class.rotate]="rotateCubes[3]"
                   [src]="cubeLinks[3]"
                   alt="cube4"
-                  (click)="cubeClicked(4)"
+                  (click)="cube4Clicked()"
                   [ngStyle]="{
-                    transform: cube4.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                    transform: cubes[3].isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
                   }"
                 />
               </div>
@@ -146,9 +153,9 @@
                   [class.rotate]="rotateCubes[4]"
                   [src]="cubeLinks[4]"
                   alt="cube5"
-                  (click)="cubeClicked(5)"
+                  (click)="cube5Clicked()"
                   [ngStyle]="{
-                    transform: cube5.isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
+                    transform: cubes[4].isCubeClicked ? 'scale(1.15)' : 'scale(1.0)'
                   }"
                 />
               </div>

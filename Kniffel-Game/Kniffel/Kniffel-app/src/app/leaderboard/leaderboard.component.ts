@@ -28,10 +28,6 @@ export class LeaderboardComponent implements OnInit {
     playerName.forEach((name) => {
       this.playerList.push(this.leaderboardService.getPlayerByName(name));
     });
-    // this.playerList.push(
-    //   { playerName: 'test6', score: 6 },
-    //   { playerName: 'Alperen', score: 273 }
-    // );
     this.playerList.sort((a, b) => b.score - a.score);
     console.log(this.playerList + "after sorting");
   }

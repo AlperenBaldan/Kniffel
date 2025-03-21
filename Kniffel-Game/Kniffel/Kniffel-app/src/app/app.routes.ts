@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { GameComponent } from './game/game.component';
-import { AppComponent } from './app.component';
+import { GameComponent } from './game/game.component'; 
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { HomeComponent } from './home/home.component';
 

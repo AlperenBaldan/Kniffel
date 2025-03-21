@@ -8,8 +8,6 @@
 .points {
   width: 45%;
   justify-self: right;
-  /* max-width: max-content; */
-  /* min-height: 50vh; */
   max-height: 75vh;
   overflow-y: scroll;
 }
@@ -41,18 +39,18 @@ text-align: center;
   border: 2px solid #ddd;
 }
 
-.backgroundcolor-lightgrey {
+.sums {
+  font-weight: bold;
   background-color: rgb(191, 191, 198);
 }
 
-
-.points tr:nth-child(7),
+/* .points tr:nth-child(7),
 .points tr:nth-child(8),
 .points tr:nth-child(9),
 .points tr:nth-child(17),
 .points tr:nth-child(18) {
   font-weight: bold;
-}
+} */
 
 .markCurrentPlayer {
   background-color: lightblue;

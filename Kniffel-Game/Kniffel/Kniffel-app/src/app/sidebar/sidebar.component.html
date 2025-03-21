@@ -1,19 +1,17 @@
 
-<mat-sidenav-container [ngClass]="open == true ? 'sidenavOpened' : 'sidenavClosed'">
+<mat-sidenav-container [ngClass]="open === true ? 'sidenavOpened' : 'sidenavClosed'">
   <mat-sidenav #sidenav mode="side">
     <div class="question-circle">
       <i class="fas fa-question-circle fa-2x" (click)="sidenav.toggle(); openOrClose()"></i>
     </div>
-
-    <br>
 
     <div class="rules">
       <h3>Goal</h3>
       <p>The aim of Kniffel is to score the most points by throwing certain combinations of cubes.</p>
 
       <h3>Roll the dice</h3>
-      <p>At the start of your turn, you can press the “Roll” button to throw the dice.
-        You can roll the dice a total of 3 times per round</p>
+      <p>At the start of your turn, you can press the “Roll” button to throw the dice.</p>
+      <p>You can roll the dice a total of 3 times per round</p>
 
       <h3>Holding cubes</h3>
       <p>After your first roll, click on a cube to “hold” it. The held cube does not change in your next roll.</p>
@@ -23,8 +21,7 @@
       <p>After you have rolled the dice, you can click on the field to the right of the category to collect the points</p>
 
       <h3>Points</h3>
-      <p>To receive points, the condition for the corresponding category must be fulfilled. You receive a different number of points for each category.
-      <br>A list with the conditions and points is below</p>
+      <p>To receive points, the condition for the corresponding category must be fulfilled. You receive a different number of points for each category.</p>
     </div>
 
   </mat-sidenav>

@@ -11,18 +11,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let entry of topLeaderboard; let i = index">
-            <td [ngClass]="isPlayedPlayerInTopLeaderboard(entry.playerName) == true ? 'markedPlayer' : ''">{{ i + 1 }}.</td>
-            <td [ngClass]="isPlayedPlayerInTopLeaderboard(entry.playerName) == true ? 'markedPlayer' : ''">{{ entry.playerName }}</td>
-            <td [ngClass]="isPlayedPlayerInTopLeaderboard(entry.playerName) == true ? 'markedPlayer' : ''">{{ entry.score }}</td>
+            <td [ngClass]="isPlayedPlayerInTopLeaderboard(entry.playerName) === true ? 'markedPlayer' : ''">{{ i + 1 }}.</td>
+            <td [ngClass]="isPlayedPlayerInTopLeaderboard(entry.playerName) === true ? 'markedPlayer' : ''">{{ entry.playerName }}</td>
+            <td [ngClass]="isPlayedPlayerInTopLeaderboard(entry.playerName) === true ? 'markedPlayer' : ''">{{ entry.score }}</td>
           </tr>
 
-          <br>
-          <br>
+          <!-- empty row -->
+          <tr>
+            <td colspan="3"></td>
+          </tr>
 
-          <tr *ngFor="let player of playerList">
-            <td *ngIf="isPlayedPlayerInTopLeaderboard(player.playerName) == false" class="markedPlayer">{{ getPlayerPosition(player.playerName) }}.</td>
-            <td *ngIf="isPlayedPlayerInTopLeaderboard(player.playerName) == false" class="markedPlayer">{{ player.playerName }}</td>
-            <td *ngIf="isPlayedPlayerInTopLeaderboard(player.playerName) == false" class="markedPlayer">{{ player.score }}</td>
+          <tr *ngFor="let player of playerList" class="otherPosition">
+            <td *ngIf="isPlayedPlayerInTopLeaderboard(player.playerName) === false" class="markedPlayer">{{ getPlayerPosition(player.playerName) }}.</td>
+            <td *ngIf="isPlayedPlayerInTopLeaderboard(player.playerName) === false" class="markedPlayer">{{ player.playerName }}</td>
+            <td *ngIf="isPlayedPlayerInTopLeaderboard(player.playerName) === false" class="markedPlayer">{{ player.score }}</td>
           </tr>
         </tbody>
       </table>
