@@ -1,10 +1,8 @@
-
-<mat-sidenav-container [ngClass]="open === true ? 'sidenavOpened' : 'sidenavClosed'">
+<mat-sidenav-container [ngClass]="open === false ? 'sidenav' : 'sidenav open'">
   <mat-sidenav #sidenav mode="side">
     <div class="question-circle">
       <i class="fas fa-question-circle fa-2x" (click)="sidenav.toggle(); openOrClose()"></i>
     </div>
-
     <div class="rules">
       <h3>Goal</h3>
       <p>The aim of Kniffel is to score the most points by throwing certain combinations of cubes.</p>

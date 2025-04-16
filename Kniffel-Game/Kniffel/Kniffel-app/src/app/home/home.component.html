@@ -11,31 +11,31 @@
     <div class="pre-settings">
       <div class="play">
         <div class="playernumber">
-          <button *ngIf="(numberofPlayers < 1) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(1)">1 Player</button>
-          <button *ngIf="(numberofPlayers < 2) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(2)">2 Player</button>
-          <button *ngIf="(numberofPlayers < 3) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(3)">3 Player</button>
-          <button *ngIf="(numberofPlayers < 4) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(4)">4 Player</button>
+          <button *ngIf="(numberOfPlayers < 1) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(1)">1 Player</button>
+          <button *ngIf="(numberOfPlayers < 2) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(2)">2 Player</button>
+          <button *ngIf="(numberOfPlayers < 3) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(3)">3 Player</button>
+          <button *ngIf="(numberOfPlayers < 4) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(4)">4 Player</button>
 
-          <div *ngIf="(numberofPlayers >= 1) && numberOfPlayerSelected === true">
+          <div *ngIf="(numberOfPlayers >= 1) && numberOfPlayerSelected === true">
             <label for="player1">Player 1 Name:</label>
             <input id="player1" [(ngModel)]="playerName1" type="text"/>
           </div>
 
-          <div *ngIf="(numberofPlayers >= 2) && numberOfPlayerSelected === true">
+          <div *ngIf="(numberOfPlayers >= 2) && numberOfPlayerSelected === true">
             <label for="player2">Player 2 Name:</label>
             <input id="player2" [(ngModel)]="playerName2" type="text"/>
           </div>
 
-          <div *ngIf="(numberofPlayers >= 3) && numberOfPlayerSelected === true">
+          <div *ngIf="(numberOfPlayers >= 3) && numberOfPlayerSelected === true">
             <label for="player3">Player 3 Name:</label>
             <input id="player3" [(ngModel)]="playerName3" type="text"/>
           </div>
 
-          <div *ngIf="(numberofPlayers >= 4 && numberOfPlayerSelected === true)">
+          <div *ngIf="(numberOfPlayers >= 4 && numberOfPlayerSelected === true)">
             <label for="player4">Player 4 Name:</label>
             <input id="player4" [(ngModel)]="playerName4" type="text"/>
           </div>
-          <div *ngIf="(numberofPlayers >= 1) && numberOfPlayerSelected === true">
+          <div *ngIf="(numberOfPlayers >= 1) && numberOfPlayerSelected === true">
             <button class="primary" id="resetBtn" type="button" (click)="reset()">Reset</button>
           </div>
         </div>

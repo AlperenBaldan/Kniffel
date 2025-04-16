@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zJhmDJia8+g=",
+  "dgSpecHash": "7bF9OgREarw=",
   "success": true,
-  "projectFilePath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj",
+  "projectFilePath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

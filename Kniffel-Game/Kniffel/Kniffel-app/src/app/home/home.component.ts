@@ -17,11 +17,10 @@ export class HomeComponent {
   public playerName2: string = '';
   public playerName3: string = '';
   public playerName4: string = '';
-  public numberofPlayers: number = 0;
+  public numberOfPlayers: number = 0;
   public numberOfPlayerSelected = false;
   public errorMessage: string = '';
-  private readonly emptyErrorMessage = '';
-
+  private readonly EMPTY_ERROR_MESSAGE = '';
   constructor(
     private leaderboardService: LeaderboardService,
     private gameService: GameService,
@@ -29,19 +28,19 @@ export class HomeComponent {
   ) {}
 
   public setNumberOfPlayingPlayers(count: number): void {
-    this.numberofPlayers = count;
+    this.numberOfPlayers = count;
     this.numberOfPlayerSelected = true;
   }
 
   private startGameConditions(): boolean {
     this.errorMessage = this.leaderboardService.startGameConditions(
-      this.numberofPlayers,
+      this.numberOfPlayers,
       [this.playerName1,
       this.playerName2,
       this.playerName3,
       this.playerName4]
     );
-    if (this.errorMessage === this.emptyErrorMessage) {
+    if (this.errorMessage === this.EMPTY_ERROR_MESSAGE) {
       return true;
     }
     return false;
@@ -49,10 +48,9 @@ export class HomeComponent {
 
   public startGame(): void {
     if (this.startGameConditions()) {
-      const playerlist: string[] = [];
+      let playerlist: string[] = [];
 
-      // überarbeiten
-      for (let i = 0; i < this.numberofPlayers; i++) {
+      for (let i = 0; i < this.numberOfPlayers; i++) {
         playerlist.push((this as any)['playerName' + (i + 1)]);
       }
 
@@ -63,11 +61,12 @@ export class HomeComponent {
   }
 
   public reset(): void {
-    this.numberofPlayers = 0;
+    this.numberOfPlayers = 0;
     this.numberOfPlayerSelected = false;
     this.playerName1 = '';
     this.playerName2 = '';
     this.playerName3 = '';
     this.playerName4 = '';
+    this.errorMessage = '';
   }
 }

@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Player } from '../../../Models/Player';
 import { Cube } from '../../../Models/Cube';
+import { Category } from '../../../enums/Category';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
   private playerList: string[] = [];
-  private readonly maxShowablePlayerCharacters: number = 5;
-  private readonly zeroPoints = 0;
-  private readonly fullHousePoints = 25;
-  private readonly smallStreetPoints = 30;
-  private readonly largeStreetPoints = 40;
-  private readonly kniffelPoints = 50;
+  private readonly MAX_SHOWABLE_PLAYER_CHARACTERS = 5;
+  private readonly ZERO_POINTS = 0;
+  private readonly FULL_HOUSE_POINTS = 25;
+  private readonly SMALL_STREET_POINTS = 30;
+  private readonly LARGE_STREET_POINTS = 40;
+  private readonly KNIFFEL_POINTS = 50;
 
 
   constructor(private router: Router) {}
@@ -35,7 +36,7 @@ export class GameService {
     return this.playerList.length;
   }
 
-  public validator(detail: string, cubes: Cube[]): number {
+  public validator(detail: string, cubes: Cube[]): number | null {
     let cubeValues = [
       cubes[0].cubeValue,
       cubes[1].cubeValue,
@@ -43,45 +44,45 @@ export class GameService {
       cubes[3].cubeValue,
       cubes[4].cubeValue,
     ];
-    let points: number = -1;
+    let points = null;
     switch (detail) {
-      case 'Ones':
+      case Category.Ones:
         points = this.returnOnes(cubeValues);
         break;
-      case 'Twos':
+      case Category.Twos:
         points = this.returnTwos(cubeValues);
         break;
-      case 'Threes':
+      case Category.Threes:
         points = this.returnThrees(cubeValues);
         break;
-      case 'Fours':
+      case Category.Fours:
         points = this.returnFours(cubeValues);
         break;
-      case 'Fives':
+      case Category.Fives:
         points = this.returnFives(cubeValues);
         break;
-      case 'Sixes':
+      case Category.Sixes:
         points = this.returnSixes(cubeValues);
         break;
-      case 'Three of a Kind':
+      case Category.ThreeOfAKind:
         points = this.returnThreeOfAKindPoints(cubeValues);
         break;
-      case 'Four of a Kind':
+      case Category.FourOfAKind:
         points = this.returnFourOfAKindPoints(cubeValues);
         break;
-      case 'Full House':
+      case Category.FullHouse:
         points = this.returnFullHousePoints(cubeValues);
         break;
-      case 'Small Street':
+      case Category.SmallStreet:
         points = this.returnSmallStreetPoints(cubeValues);
         break;
-      case 'Large Street':
+      case Category.LargeStreet:
         points = this.returnLargeStreetPoints(cubeValues);
         break;
-      case 'Kniffel':
+      case Category.Kniffel:
         points = this.returnKniffelPoints(cubeValues);
         break;
-      case 'Chance':
+      case Category.Chance:
         points = this.cubeSumm(cubeValues);
         break;
     }
@@ -89,56 +90,56 @@ export class GameService {
   }
 
   public showPlayerName(name: string): string {
-    if (name.length > this.maxShowablePlayerCharacters) {
+    if (name.length > this.MAX_SHOWABLE_PLAYER_CHARACTERS) {
       name = name.substring(0, 5) + '..';
     }
     return name;
   }
 
   public isCategoryEmpty(player: Player, detail: string): boolean {
-    let points: number = -2;
+    let points: number | null = null;
     switch (detail) {
-      case 'Ones':
+      case Category.Ones:
         points = player.Ones;
         break;
-      case 'Twos':
+      case Category.Twos:
         points = player.Twos;
         break;
-      case 'Threes':
+      case Category.Threes:
         points = player.Threes;
         break;
-      case 'Fours':
+      case Category.Fours:
         points = player.Fours;
         break;
-      case 'Fives':
+      case Category.Fives:
         points = player.Fives;
         break;
-      case 'Sixes':
+      case Category.Sixes:
         points = player.Sixes;
         break;
-      case 'Three of a Kind':
+      case Category.ThreeOfAKind:
         points = player.Three_of_a_Kind;
         break;
-      case 'Four of a Kind':
+      case Category.FourOfAKind:
         points = player.Four_of_a_Kind;
         break;
-      case 'Full House':
+      case Category.FullHouse:
         points = player.Full_House;
         break;
-      case 'Small Street':
+      case Category.SmallStreet:
         points = player.Small_Street;
         break;
-      case 'Large Street':
+      case Category.LargeStreet:
         points = player.Large_Street;
         break;
-      case 'Kniffel':
+      case Category.Kniffel:
         points = player.Kniffel;
         break;
-      case 'Chance':
+      case Category.Chance:
         points = player.Chance;
         break;
     }
-    if (points === -1) {
+    if (points === null) {
       return true;
     } else {
       return false;
@@ -186,7 +187,7 @@ export class GameService {
     if (duplicate) {
       return this.cubeSumm(cubeValues);
     } else {
-      return this.zeroPoints;
+      return this.ZERO_POINTS;
     }
   }
 
@@ -194,7 +195,7 @@ export class GameService {
     let duplicate = cubeValues.some(
       (num, i, arr) => arr.filter((item) => item === num).length >= 4
     );
-    return duplicate ? this.cubeSumm(cubeValues) : this.zeroPoints;
+    return duplicate ? this.cubeSumm(cubeValues) : this.ZERO_POINTS;
   }
 
   private returnFullHousePoints(cubeValues: number[]): number {
@@ -203,7 +204,7 @@ export class GameService {
       value,
       cubeValues.filter((str) => str === value).length,
     ]);
-    return duplicates.length === 2 ? this.fullHousePoints : this.zeroPoints;
+    return duplicates.length === 2 ? this.FULL_HOUSE_POINTS : this.ZERO_POINTS;
   }
 
   private returnSmallStreetPoints(cubeValues: number[]): number {
@@ -215,10 +216,10 @@ export class GameService {
         cubeValues[i + 2] === cubeValues[i] + 2 &&
         cubeValues[i + 3] === cubeValues[i] + 3
       ) {
-        return this.smallStreetPoints;
+        return this.SMALL_STREET_POINTS;
       }
     }
-    return this.zeroPoints;
+    return this.ZERO_POINTS;
   }
 
   private returnLargeStreetPoints(cubeValues: number[]): number {
@@ -227,8 +228,8 @@ export class GameService {
       cubeValues[2] === cubeValues[0] + 2 &&
       cubeValues[3] === cubeValues[0] + 3 &&
       cubeValues[4] === cubeValues[0] + 4
-      ? this.largeStreetPoints
-      : this.zeroPoints;
+      ? this.LARGE_STREET_POINTS
+      : this.ZERO_POINTS;
   }
 
   private returnKniffelPoints(cubeValues: number[]): number {
@@ -237,8 +238,8 @@ export class GameService {
       cubeValues[1] === cubeValues[2] &&
       cubeValues[2] === cubeValues[3] &&
       cubeValues[3] === cubeValues[4]
-      ? this.kniffelPoints
-      : this.zeroPoints;
+      ? this.KNIFFEL_POINTS
+      : this.ZERO_POINTS;
   }
 
   

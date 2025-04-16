@@ -8,5 +8,10 @@ div {
 
 .sidebar {
   box-shadow: none;
-  width: 50px;
+  /* width: 50px; */
+  padding-top: 60px;
+}
+
+.padding-top {
+  margin-top: 40px;
 }

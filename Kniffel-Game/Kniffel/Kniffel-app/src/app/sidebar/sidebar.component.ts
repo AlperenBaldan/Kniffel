@@ -3,6 +3,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { NgIf } from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { NgClass } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
@@ -13,6 +16,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     MatCheckboxModule,
     FormsModule,
     MatButtonModule,
+    NgIf,
     NgClass,
   ],
   templateUrl: './sidebar.component.html',
@@ -38,6 +42,6 @@ export class SidebarComponent {
   }
 
   openOrClose() {
-    this.open = this.open ? false : true;
+    this.open = !this.open;
   }
 }

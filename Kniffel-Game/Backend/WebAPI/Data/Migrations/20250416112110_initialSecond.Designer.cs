@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250318121711_initial")]
-    partial class initial
+    [Migration("20250416112110_initialSecond")]
+    partial class initialSecond
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,26 +24,50 @@ namespace Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Models.LeaderboardEntry", b =>
+            modelBuilder.Entity("Models.GameSession", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Highscore")
+                    b.Property<int>("CurrentPlayerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Position")
+                    b.PrimitiveCollection<string>("PlayerIdsInOrder")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Round")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.ToTable("leaderboardEntries");
+                    b.ToTable("GameSession");
                 });
 
             modelBuilder.Entity("Models.Player", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("Highscore")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Players");
+                });
+
+            modelBuilder.Entity("Models.Point", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,47 +81,46 @@ namespace Data.Migrations
                     b.Property<int>("Bottom_Sum")
                         .HasColumnType("int");
 
-                    b.Property<int>("Chance")
+                    b.Property<int?>("Chance")
                         .HasColumnType("int");
 
-                    b.Property<int>("Fives")
+                    b.Property<int?>("Fives")
                         .HasColumnType("int");
 
-                    b.Property<int>("Four_of_a_Kind")
+                    b.Property<int?>("Four_of_a_Kind")
                         .HasColumnType("int");
 
-                    b.Property<int>("Fours")
+                    b.Property<int?>("Fours")
                         .HasColumnType("int");
 
-                    b.Property<int>("Full_House")
+                    b.Property<int?>("Full_House")
                         .HasColumnType("int");
 
-                    b.Property<int>("Kniffel")
+                    b.Property<int>("GameSessionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Large_Street")
+                    b.Property<int?>("Kniffel")
                         .HasColumnType("int");
 
-                    b.Property<int>("LeaderboardEntryID")
+                    b.Property<int?>("Large_Street")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Ones")
+                    b.Property<int?>("Ones")
                         .HasColumnType("int");
 
-                    b.Property<int>("Sixes")
+                    b.Property<int>("PlayerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Small_Street")
+                    b.Property<int?>("Sixes")
                         .HasColumnType("int");
 
-                    b.Property<int>("Three_of_a_Kind")
+                    b.Property<int?>("Small_Street")
                         .HasColumnType("int");
 
-                    b.Property<int>("Threes")
+                    b.Property<int?>("Three_of_a_Kind")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Threes")
                         .HasColumnType("int");
 
                     b.Property<int>("Top_Sum")
@@ -109,25 +132,35 @@ namespace Data.Migrations
                     b.Property<int>("Total_Top")
                         .HasColumnType("int");
 
-                    b.Property<int>("Twos")
+                    b.Property<int?>("Twos")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LeaderboardEntryID");
+                    b.HasIndex("GameSessionId");
 
-                    b.ToTable("Players");
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("Point");
                 });
 
-            modelBuilder.Entity("Models.Player", b =>
+            modelBuilder.Entity("Models.Point", b =>
                 {
-                    b.HasOne("Models.LeaderboardEntry", "LeaderboardEntry")
+                    b.HasOne("Models.GameSession", "GameSession")
                         .WithMany()
-                        .HasForeignKey("LeaderboardEntryID")
+                        .HasForeignKey("GameSessionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("LeaderboardEntry");
+                    b.HasOne("Models.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("GameSession");
+
+                    b.Navigation("Player");
                 });
 #pragma warning restore 612, 618
         }

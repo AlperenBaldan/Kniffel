@@ -3,7 +3,9 @@
 }
 
 .navbar {
-  height: 50px;
+  position: fixed;
+  top: 0;
+  height: 60px;
 }
 
 .navbar-links {
@@ -32,9 +34,6 @@
 }
 
 @media (max-width: 768.98px) {
-  .navbar {
-    height: 35px;
-  }
 
   .links {
     padding-left: 0px;
@@ -42,15 +41,3 @@
     font-weight: 500;
   }
 }
-
-/* .normalLinks {
-  padding-left: 20px;
-  text-align: center;
-  border: none;
-  font-weight: bold;
-}
-
-.smallLinks {
-  border: none;
-  font-weight: 500;
-} */

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "abPy0cb0cVs=",
+  "dgSpecHash": "SKFVI5wQrqk=",
   "success": true,
-  "projectFilePath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\DataContracts.csproj",
+  "projectFilePath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\DataContracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

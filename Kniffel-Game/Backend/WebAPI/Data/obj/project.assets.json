@@ -3393,11 +3393,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\Data.csproj",
+      "projectPath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\BALD126\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Data\\obj\\",
+      "outputPath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3419,14 +3419,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Business\\Business.csproj": {
-              "projectPath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Business\\Business.csproj"
+            "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Business\\Business.csproj": {
+              "projectPath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Business\\Business.csproj"
             },
-            "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\DataContracts.csproj": {
-              "projectPath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\DataContracts.csproj"
+            "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\DataContracts.csproj": {
+              "projectPath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\DataContracts\\DataContracts.csproj"
             },
-            "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj": {
-              "projectPath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj"
+            "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj": {
+              "projectPath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj"
             }
           }
         }

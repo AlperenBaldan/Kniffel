@@ -8,6 +8,7 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { Player } from '../../Models/Player';
 import { Cube } from '../../Models/Cube';
+import { Category } from '../../enums/Category';
 
 
 @Component({
@@ -24,10 +25,8 @@ export class GameComponent implements OnInit {
     private leaderboardService: LeaderboardService
   ) {}
 
-  private readonly maxRolls = 3;
-  private readonly lastRound = 13;
-  private readonly minPointsForBonus = 63;
-  private readonly bonusPoints = 35;
+  private readonly MAX_ROLLS = 3;
+  private readonly LAST_ROUND = 13;
 
   public cubeLinks: string[] = [
     'assets/images/dice1.png',
@@ -38,25 +37,25 @@ export class GameComponent implements OnInit {
   ];
 
   public categories = [
-    { name: 'Ones' },
-    { name: 'Twos' },
-    { name: 'Threes' },
-    { name: 'Fours' },
-    { name: 'Fives' },
-    { name: 'Sixes' },
+    { name: Category.Ones },
+    { name: Category.Twos },
+    { name: Category.Threes },
+    { name: Category.Fours },
+    { name: Category.Fives },
+    { name: Category.Sixes },
     { name: 'Top Sum' },
     { name: 'Bonus' },
     { name: 'Total Top' },
-    { name: 'Three of a Kind' },
-    { name: 'Four of a Kind' },
-    { name: 'Full House' },
-    { name: 'Small Street' },
-    { name: 'Large Street' },
-    { name: 'Kniffel' },
-    { name: 'Chance' },
+    { name: Category.ThreeOfAKind },
+    { name: Category.FourOfAKind },
+    { name: Category.FullHouse },
+    { name: Category.SmallStreet },
+    { name: Category.LargeStreet },
+    { name: Category.Kniffel },
+    { name: Category.Chance },
     { name: 'Bottom Sum' },
     { name: 'Total Sum' },
-  ];
+];
 
   public categoriesHelpText = [
     { name: 'Count only ones.' },
@@ -134,80 +133,61 @@ export class GameComponent implements OnInit {
       if (this.currentPlayer === player) {
         if (this.isCategoryEmpty(player, detail)) {
           switch (detail) {
-            case 'Ones':
+            case Category.Ones:
               player.Ones = this.gameService.validator(detail, this.cubes);
-              player.Top_Sum += player.Ones;
               break;
-            case 'Twos':
+            case Category.Twos:
               player.Twos = this.gameService.validator(detail, this.cubes);
-              player.Top_Sum += player.Twos;
               break;
-            case 'Threes':
+            case Category.Threes:
               player.Threes = this.gameService.validator(detail, this.cubes);
-              player.Top_Sum += player.Threes;
               break;
-            case 'Fours':
+            case Category.Fours:
               player.Fours = this.gameService.validator(detail, this.cubes);
-              player.Top_Sum += player.Fours;
               break;
-            case 'Fives':
+            case Category.Fives:
               player.Fives = this.gameService.validator(detail, this.cubes);
-              player.Top_Sum += player.Fives;
               break;
-            case 'Sixes':
+            case Category.Sixes:
               player.Sixes = this.gameService.validator(detail, this.cubes);
-              player.Top_Sum += player.Sixes;
               break;
-            case 'Three of a Kind':
+            case Category.ThreeOfAKind:
               player.Three_of_a_Kind = this.gameService.validator(
                 detail,
                 this.cubes
               );
-              player.Bottom_Sum += player.Three_of_a_Kind;
               break;
-            case 'Four of a Kind':
+            case Category.FourOfAKind:
               player.Four_of_a_Kind = this.gameService.validator(
                 detail,
                 this.cubes
               );
-              player.Bottom_Sum += player.Four_of_a_Kind;
               break;
-            case 'Full House':
+            case Category.FullHouse:
               player.Full_House = this.gameService.validator(
                 detail,
                 this.cubes
               );
-              player.Bottom_Sum += player.Full_House;
               break;
-            case 'Small Street':
+            case Category.SmallStreet:
               player.Small_Street = this.gameService.validator(
                 detail,
                 this.cubes
               );
-              player.Bottom_Sum += player.Small_Street;
               break;
-            case 'Large Street':
+            case Category.LargeStreet:
               player.Large_Street = this.gameService.validator(
                 detail,
                 this.cubes
               );
-              player.Bottom_Sum += player.Large_Street;
               break;
-            case 'Kniffel':
+            case Category.Kniffel:
               player.Kniffel = this.gameService.validator(detail, this.cubes);
-              player.Bottom_Sum += player.Kniffel;
               break;
-            case 'Chance':
+            case Category.Chance:
               player.Chance = this.gameService.validator(detail, this.cubes);
-              player.Bottom_Sum += player.Chance;
               break;
           }
-
-          if (player.Top_Sum >= this.minPointsForBonus) {
-            player.Bonus = this.bonusPoints;
-          }
-          player.Total_Top = player.Top_Sum + player.Bonus;
-          player.Total_Sum = player.Bottom_Sum + player.Total_Top;
 
           this.sessionLeaderboard.sort((a, b) => b.Total_Sum - a.Total_Sum);
 
@@ -215,7 +195,7 @@ export class GameComponent implements OnInit {
           this.cubeLinks = this.cubeService.resetCubeLinks();
           this.updateCurrentPlayer();
           this.rolled = false;
-          if (this.round === this.lastRound) {
+          if (this.round === this.LAST_ROUND) {
             this.gameFinished();
           }
         }
@@ -242,13 +222,13 @@ export class GameComponent implements OnInit {
     console.log(this.currentPlayer);
   }
 
-  public showHoverPoints(detail: string): number {
+  public showHoverPoints(detail: string): number | null{
     return this.gameService.validator(detail, this.cubes);
   }
   
   public roll(): void {
     this.rolled = true;
-    if (this.rolledNumber >= this.maxRolls) {
+    if (this.rolledNumber >= this.MAX_ROLLS) {
       this.errorMessage = 'Du hast bereits 3 Mal geworfen!';
     } else {
       for (let i = 0; i < this.cubes.length; i++) {

@@ -1,24 +1,44 @@
 export class Player {
   name: string;
 
-  Ones: number = -1;
-  Twos: number = -1;
-  Threes: number = -1;
-  Fours: number = -1;
-  Fives: number = -1;
-  Sixes: number = -1;
-  Top_Sum: number = 0;
-  Bonus: number = 0;
-  Total_Top: number = 0;
-  Three_of_a_Kind: number = -1;
-  Four_of_a_Kind: number = -1;
-  Full_House: number = -1;
-  Small_Street: number = -1;
-  Large_Street: number = -1;
-  Kniffel: number = -1;
-  Chance: number = -1;
-  Bottom_Sum: number = 0;
-  Total_Sum: number = 0;
+  Ones: number | null = null;
+  Twos: number | null = null;
+  Threes: number | null = null;
+  Fours: number | null = null;
+  Fives: number | null = null;
+  Sixes: number | null = null;
+
+  get Top_Sum(): number {
+    return (this.Ones ?? 0) + (this.Twos ?? 0) + (this.Threes ?? 0) +
+    (this.Fours ?? 0) + (this.Fives ?? 0) + (this.Sixes ?? 0);
+  }
+  
+  get Bonus(): number {
+    return this.Top_Sum > 63 ? 35 : 0;
+  }
+
+  get Total_Top(): number {
+    return (this.Top_Sum ?? 0) + (this.Bonus ?? 0);
+  }
+
+  Three_of_a_Kind: number | null = null;
+  Four_of_a_Kind: number | null = null;
+  Full_House: number | null = null;
+  Small_Street: number | null = null;
+  Large_Street: number | null = null;
+  Kniffel: number | null = null;
+  Chance: number | null = null;
+  
+  get Bottom_Sum(): number {
+    return (this.Three_of_a_Kind ?? 0) + (this.Four_of_a_Kind ?? 0) + (this.Full_House ?? 0) +
+    (this.Small_Street ?? 0) + (this.Large_Street ?? 0) + (this.Kniffel ?? 0) + (this.Chance ?? 0);
+  }
+
+  get Total_Sum(): number {
+    return (this.Total_Top + this.Bottom_Sum);
+  }
+
+  
 
   constructor(name: string) {
     this.name = name;

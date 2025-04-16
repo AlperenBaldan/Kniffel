@@ -6,64 +6,32 @@ import { Injectable } from '@angular/core';
 export class LeaderboardService {
   private leaderboard: { playerName: string; score: number }[] = [];
   private topLeaderboard: { playerName: string; score: number }[] = [];
-  private readonly maxNameLength = 12;
-  private readonly emptyname = '';
+  private readonly MAX_NAME_LENGTH = 12;
+  private readonly EMPTY_NAME = '';
 
   constructor() {}
 
-  public startGameConditions(
-    numberofPlayers: number,
-    playerNames: string[]
-  ): string {
+  public startGameConditions(numberOfPlayers: number, playerNames: string[]): string {
     this.loadleaderboard();
-    for (let i = 0; i < playerNames.length; i++) {
-      if (playerNames[i] === this.emptyname) 
+    for (let i = 0; i < numberOfPlayers; i++) {
+      if (playerNames[i] === this.EMPTY_NAME) 
       {
-        return 'Please enter a name for Player ' + i + '!';
+        return 'Please enter a name for Player ' + (i+1) + '!';
       }
       if (this.isNameInLeaderboard(playerNames[i])) {
         return 'Player with name ' + playerNames[i] + ' already exists!';
       }
-      playerNames.
+      if (playerNames[i].length > this.MAX_NAME_LENGTH) {
+        return "Name of Player " + (i+1) + " is too long. Total length can't exceed 12 characters.";
+      }
     }
 
-
-    switch (numberofPlayers) {
-  
-      case 2:
-       if (playerName1 === playerName2) {
-          return "Players cant't have the same name.";
+    for (let i = 0; i < numberOfPlayers-1; i++) {
+      for (let j = i+1; j < numberOfPlayers; j++) {
+        if (playerNames[i] === playerNames[j]) {
+          return 'Player ' + (i+1) + ' and Player ' + (j+1) + ' have the same name!'
         }
-        break;
-      case 3:
-        if (
-          playerName1 === playerName2 ||
-          playerName1 === playerName3 ||
-          playerName2 === playerName3
-        ) {
-          return "Players cant't have the same name.";
-        }
-        break;
-      case 4:
-        if (
-          playerName1 === playerName2 ||
-          playerName1 === playerName3 ||
-          playerName1 === playerName4 ||
-          playerName2 === playerName3 ||
-          playerName2 === playerName4 ||
-          playerName3 === playerName4
-        ) {
-          return "Players can't have the same name.";
-        }
-        break;
-    }
-    if (
-      playerName1.length > this.maxNameLength ||
-      playerName2.length > this.maxNameLength ||
-      playerName3.length > this.maxNameLength ||
-      playerName4.length > this.maxNameLength
-    ) {
-      return "Player name is too long. Total length can't exceed 12 characters.";
+      }
     }
     return '';
   }
@@ -109,9 +77,9 @@ export class LeaderboardService {
   }
 
   public loadleaderboard(): void {
-    const storedLeaderboard = localStorage.getItem('leaderboard');
-    if (storedLeaderboard) {
-      this.leaderboard = JSON.parse(storedLeaderboard);
+    const STORED_LEADERBOARD = localStorage.getItem('leaderboard');
+    if (STORED_LEADERBOARD) {
+      this.leaderboard = JSON.parse(STORED_LEADERBOARD);
       this.updateTopLeaderboard();
     } else {
       console.log('No leaderboard found in local storage');

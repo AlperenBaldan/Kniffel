@@ -1,23 +1,17 @@
-/* Sidenav geöffnet */
-.sidenavOpened {
+.sidenav {
   position: fixed;
   top: 35px;
+  height: 100%;
+  width: 60px;
+  border-right: 1px solid #ccc;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidenav.open {
   width: 275px;
-  height: 100%;
-  border-right: 1px solid #ccc;
-  transition: width 0.3s ease-in-out;
 }
 
-/* Sidenav geschlossen */
-.sidenavClosed {
-  position: fixed;
-  top: 35px;
-  width: 50px;
-  height: 100%;
-  border-right: 1px solid #ccc;
-  transition: width 0.3s ease-in-out;
-}
-
+  
 .question-circle {
   padding-top: 45px;
   padding-left: 32%;

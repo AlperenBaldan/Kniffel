@@ -13,8 +13,8 @@ namespace Data
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
         public DbSet<Player> Players { get; set; }
-        public DbSet<LeaderboardEntry> leaderboardEntries { get; set; }
-
+        public DbSet<Point> Point { get; set; }
+        public DbSet<GameSession> GameSession { get; set; }
 
     }
 }

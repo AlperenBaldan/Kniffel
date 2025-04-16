@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from '../service/game/game.service';
 import { LeaderboardService } from '../service/leaderboard/leaderboard.service';
@@ -13,7 +13,7 @@ export class NavbarComponent {
   constructor(
     private router: Router,
     private gameService: GameService,
-    private leaderboardervice: LeaderboardService,
+    private leaderboardService: LeaderboardService,
   ) {}
 
   public goToHome(): void {
@@ -23,7 +23,7 @@ export class NavbarComponent {
 
   public goToLeaderboard(): void {
     this.router.navigate(['/leaderboard']);
-    this.leaderboardervice.loadleaderboard();
+    this.leaderboardService.loadleaderboard();
     this.gameService.resetGame();
   }
 }

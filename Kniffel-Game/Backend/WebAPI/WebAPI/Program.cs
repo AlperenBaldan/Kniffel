@@ -1,6 +1,9 @@
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.EntityFrameworkCore;
+using Business.Interfaces;
+using Business.Services;
 using Data;
+using Data.Repositories;
+using DataContracts.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,12 +20,12 @@ builder.Services.AddDbContext<DatabaseContext>(opt =>
 });
 
 // Service Injection
-
+builder.Services.AddScoped<IPlayerService, PlayerService>();
 
 
 
 // Repository Injection
-
+builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 
 
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj": {}
+    "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj": {
+    "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj",
+        "projectPath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\BALD126\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Kniffel-Game\\Backend\\WebAPI\\Models\\obj\\",
+        "outputPath": "C:\\Projects\\Repositories\\Kniffel\\Kniffel-Game\\Backend\\WebAPI\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
