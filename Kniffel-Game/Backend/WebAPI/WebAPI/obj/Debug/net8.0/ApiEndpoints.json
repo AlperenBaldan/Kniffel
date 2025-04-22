@@ -1,12 +1,18 @@
 [
   {
     "ContainingType": "WebAPI.Controllers.PlayerController",
-    "Method": "InsertDummyData",
-    "RelativePath": "api/Player",
-    "HttpMethod": "POST",
+    "Method": "GetPlayerById",
+    "RelativePath": "api/Player/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

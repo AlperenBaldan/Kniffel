@@ -41,9 +41,62 @@ label {
 }
 
 .play {
+  width: 100%;
   display: grid;
   gap: 10px;
   width: 60%;
+}
+
+.btn-outline-orange {
+  color: orange;
+  border-color: orange;
+}
+
+.btn-outline-orange:hover {
+  background-color: orange;
+  color: white;
+}
+
+.continueGame {
+  padding-bottom: 4%;
+  width: 100%;
+}
+
+.loadedGames {
+  padding-top: 10px;
+}
+
+.loadedGames table {
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loadedGames th {
+  background-color: yellowgreen;
+}
+
+.loadedGames th, td{
+  border: 2px solid #ddd;
+}
+
+#goBackBtn {
+  margin-top: 20px;
+  background-color: red;
+  width: 40%;
+  margin-left: 30%;
+}
+
+.newGame {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid green;
+  
+  text-align: center;
+}
+
+.playernumber {
+  display: flex;
 }
 
 /* Inputs */

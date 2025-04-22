@@ -19,15 +19,14 @@ namespace Data.Repositories
         }
 
 
-        Player p1 = new() { Name = "DummyTest", Highscore = 0};
+        Player p1 = new() { Name = "DummyTest2", Highscore = 100};
 
 
 
-        public void InsertDummyData()
+        public Player? GetPlayerById(int id)
         {
-            //_context.Add(pointsP1);
-            _context.Add(p1);
-            _context.SaveChanges();
+            var player = _context.Player.FirstOrDefault(p =>  p.Id == id);
+            return player;
         }
     }
 }

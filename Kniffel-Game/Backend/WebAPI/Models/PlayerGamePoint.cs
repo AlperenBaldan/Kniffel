@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class Point
+    public class PlayerGamePoint
     {
         public int Id { get; set; }
         public int? Ones { get; set; }
@@ -21,9 +21,5 @@
         public int? Chance { get; set; }
         public int Bottom_Sum { get; set; }
         public int Total_Sum { get; set; }
-        public int PlayerId { get; set; }
-        public Player Player { get; set; }
-        public int GameSessionId { get; set; }
-        public GameSession GameSession { get; set; }
     }
 }

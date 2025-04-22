@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace DataContracts.Interfaces
 {
     public interface IPlayerRepository
     {
-        public void InsertDummyData();
+        public Player? GetPlayerById(int id);
     }
 }

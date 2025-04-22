@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -16,8 +17,9 @@ namespace Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CurrentPlayer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Round = table.Column<int>(type: "int", nullable: false)
+                    CurrentPlayerID = table.Column<int>(type: "int", nullable: false),
+                    Round = table.Column<int>(type: "int", nullable: false),
+                    LastPlayedTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +27,21 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Point",
+                name: "Player",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Highscore = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Player", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlayerGamePoint",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -51,59 +67,66 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Point", x => x.Id);
+                    table.PrimaryKey("PK_PlayerGamePoint", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Players",
+                name: "GameSessionPlayer",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Highscore = table.Column<int>(type: "int", nullable: false),
-                    TurnOrder = table.Column<int>(type: "int", nullable: true),
-                    PointId = table.Column<int>(type: "int", nullable: false),
-                    GameSessionId = table.Column<int>(type: "int", nullable: true)
+                    GameSessionId = table.Column<int>(type: "int", nullable: false),
+                    PlayerId = table.Column<int>(type: "int", nullable: false),
+                    PlayerGamePointId = table.Column<int>(type: "int", nullable: false),
+                    Order = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Players", x => x.Id);
+                    table.PrimaryKey("PK_GameSessionPlayer", x => new { x.GameSessionId, x.PlayerId });
                     table.ForeignKey(
-                        name: "FK_Players_GameSession_GameSessionId",
+                        name: "FK_GameSessionPlayer_GameSession_GameSessionId",
                         column: x => x.GameSessionId,
                         principalTable: "GameSession",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Players_Point_PointId",
-                        column: x => x.PointId,
-                        principalTable: "Point",
+                        name: "FK_GameSessionPlayer_PlayerGamePoint_PlayerGamePointId",
+                        column: x => x.PlayerGamePointId,
+                        principalTable: "PlayerGamePoint",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GameSessionPlayer_Player_PlayerId",
+                        column: x => x.PlayerId,
+                        principalTable: "Player",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Players_GameSessionId",
-                table: "Players",
-                column: "GameSessionId");
+                name: "IX_GameSessionPlayer_PlayerGamePointId",
+                table: "GameSessionPlayer",
+                column: "PlayerGamePointId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Players_PointId",
-                table: "Players",
-                column: "PointId");
+                name: "IX_GameSessionPlayer_PlayerId",
+                table: "GameSessionPlayer",
+                column: "PlayerId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Players");
+                name: "GameSessionPlayer");
 
             migrationBuilder.DropTable(
                 name: "GameSession");
 
             migrationBuilder.DropTable(
-                name: "Point");
+                name: "PlayerGamePoint");
+
+            migrationBuilder.DropTable(
+                name: "Player");
         }
     }
 }

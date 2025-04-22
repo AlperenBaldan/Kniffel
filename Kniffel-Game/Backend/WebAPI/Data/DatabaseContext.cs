@@ -12,9 +12,17 @@ namespace Data
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
-        public DbSet<Player> Players { get; set; }
-        public DbSet<Point> Point { get; set; }
+        public DbSet<Player> Player { get; set; }
+        public DbSet<PlayerGamePoint> PlayerGamePoint { get; set; }
         public DbSet<GameSession> GameSession { get; set; }
+        public DbSet<GameSessionPlayer> GameSessionPlayer { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<GameSessionPlayer>().HasKey(gsp => new { gsp.GameSessionId, gsp.PlayerId });
+        }
 
     }
 }

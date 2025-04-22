@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Player } from '../../../Models/Player';
 
 @Injectable({
   providedIn: 'root',
@@ -17,9 +18,6 @@ export class LeaderboardService {
       if (playerNames[i] === this.EMPTY_NAME) 
       {
         return 'Please enter a name for Player ' + (i+1) + '!';
-      }
-      if (this.isNameInLeaderboard(playerNames[i])) {
-        return 'Player with name ' + playerNames[i] + ' already exists!';
       }
       if (playerNames[i].length > this.MAX_NAME_LENGTH) {
         return "Name of Player " + (i+1) + " is too long. Total length can't exceed 12 characters.";
@@ -53,15 +51,23 @@ export class LeaderboardService {
 
   public getPlayerPosition(playerName: string): number {
     return (
-      this.leaderboard.findIndex((entry) => entry.playerName === playerName) + 1
+      this.leaderboard.findIndex((entry) => entry.playerName === playerName)
     );
   }
 
-  public addScore(playerName: string, score: number): void {
-    this.leaderboard.push({
+  public addScore(playerName: string, playerScore: number): void {
+    if (this.isNameInLeaderboard(playerName)) {
+      let playerPositionInList = this.getPlayerPosition(playerName);
+      if (this.leaderboard[playerPositionInList].score < playerScore) {
+        this.leaderboard[playerPositionInList].score = playerScore;
+      }
+    }
+    else {
+      this.leaderboard.push({
       playerName: playerName,
-      score: score,
-    });
+      score: playerScore,
+      });
+    }
     this.leaderboard = this.leaderboard.sort((a, b) => b.score - a.score);
     this.updateTopLeaderboard();
     localStorage.setItem('leaderboard', JSON.stringify(this.leaderboard));

@@ -16,13 +16,17 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult InsertDummyData()
+        [HttpGet("{id}")]
+        public ActionResult GetPlayerById(int id)
         {
             try
             {
-                _playerService.InsertDummyData();
-                return Ok();
+                var player = _playerService.GetPlayerById(id);
+                return Ok(player);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return StatusCode(404, new { ex.Message });
             }
             catch (Exception ex)
             {

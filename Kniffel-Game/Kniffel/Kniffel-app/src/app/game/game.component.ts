@@ -91,7 +91,7 @@ export class GameComponent implements OnInit {
     { cubeValue: 0, isCubeClicked: false }
   ];
 
-  public round: number = 0;
+  public round: number = 1;
   private rolledNumber: number = 0;
   public errorMessage: string = '';
 
@@ -100,24 +100,12 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.resetGame();
     let numberOfPlayers = this.gameService.getNumberOfPlayers();
-    
-    if (numberOfPlayers >= 1) {
-      let player1: Player = new Player(this.gameService.getPlayerName(1));
-      this.players.push(player1);
+    for (let i = 0; i < numberOfPlayers; i++) {
+      let player: Player = new Player(this.gameService.getPlayerName(i));
+      console.log("This is Player " + (i+1) + " named " + player.name + " || " + player);
+      this.players.push(player);
     }
-    if (numberOfPlayers >= 2) {
-      let player2: Player = new Player(this.gameService.getPlayerName(2));
-      this.players.push(player2);
-    }
-    if (numberOfPlayers >= 3) {
-      let player3: Player = new Player(this.gameService.getPlayerName(3));
-      this.players.push(player3);
-    }
-    if (numberOfPlayers >= 4) {
-      let player4: Player = new Player(this.gameService.getPlayerName(4));
-      this.players.push(player4);
-    }
-    console.log(this.players);
+    console.log("All Players at beginning" + this.players);
     this.sessionLeaderboard = [...this.players];
     this.currentPlayer = this.players[0];
   }
@@ -195,7 +183,8 @@ export class GameComponent implements OnInit {
           this.cubeLinks = this.cubeService.resetCubeLinks();
           this.updateCurrentPlayer();
           this.rolled = false;
-          if (this.round === this.LAST_ROUND) {
+          if (this.round > this.LAST_ROUND) {
+            console.log("Game finished  (last round played");
             this.gameFinished();
           }
         }
@@ -229,7 +218,7 @@ export class GameComponent implements OnInit {
   public roll(): void {
     this.rolled = true;
     if (this.rolledNumber >= this.MAX_ROLLS) {
-      this.errorMessage = 'Du hast bereits 3 Mal geworfen!';
+      this.errorMessage = 'Du hast bereits ' + this.MAX_ROLLS + ' Mal geworfen!';
     } else {
       for (let i = 0; i < this.cubes.length; i++) {
         if (!this.cubes[i].isCubeClicked) {
@@ -284,7 +273,9 @@ export class GameComponent implements OnInit {
   }
 
   private gameFinished(): void {
+    console.log("All Players" + this.players);
     this.players.forEach((player) => {
+      console.log("inserting player: " + player + " and his total score: " + player.Total_Sum);
       this.leaderboardService.addScore(player.name, player.Total_Sum);
     });
     this.resetGame();
@@ -295,7 +286,7 @@ export class GameComponent implements OnInit {
   private resetGame(): void {
     this.resetCubes();
     this.resetPlayer();
-    this.round = 0;
+    this.round = 1;
   }
 }
 

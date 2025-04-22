@@ -25,7 +25,7 @@ export class GameService {
   }
 
   public getPlayerName(index: number): string {
-    return this.playerList[index - 1];
+    return this.playerList[index];
   }
 
   getPlayerList(): string[] {

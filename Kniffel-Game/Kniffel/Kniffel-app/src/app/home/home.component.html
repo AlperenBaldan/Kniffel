@@ -1,48 +1,112 @@
 <div class="fullContent">
   <div class="container-sm">
-    <div class="content">
-      <h2>Willkommen bei Kniffel! 🎲</h2>
-      <p>Ein spannendes Würfelspiel, das Strategie und Glück vereint.</p>
-      <p>Versuche, mit fünf Würfeln die besten Kombinationen zu erzielen und sammle Punkte in verschiedenen Kategorien wie „Full House“, „Straßen“ und „Kniffel“. Doch sei vorsichtig, du hast nur drei Würfe pro Runde!</p>
-      <p>Zeige dein Können und bringe deine Würfelfähigkeiten zum Einsatz - der Kniffel-Sieg wartet auf dich!</p>
-      <p>Viel Spaß und viel Glück! 🍀</p>
+    <div *ngIf="displayView === HOME_SCREEN_VIEW" class="content">
+      <h2>Welcome to Kniffel! 🎲</h2>
+      <p>An exciting dice game that combines strategy and luck.</p>
+      <p>Try to achieve the best combinations with five dice and collect points in various categories such as “Fives”, “Full House” and “ Kniffel”. 
+        <br>But be careful, you only have three rolls per round!</p>
+      <p>Show off your skills and put your dice throwing abilities to good use - victory is waiting for you!</p>
+      <p>Have fun and good luck! 🍀</p>
+    </div>
+
+    <div *ngIf="displayView === NEW_GAME_PLAYER_NAMES_VIEW" class="content">
+      <h2>Welcome🎲</h2>
+      <p>Please enter the names.</p>
+      
+    </div>
+
+    <div *ngIf="displayView === CONTINUE_GAME_VIEW" class="content">
+      <h2>Welcome 🎲</h2>
+      <p>Continue Game info.</p>
     </div>
 
     <div class="pre-settings">
       <div class="play">
-        <div class="playernumber">
-          <button *ngIf="(numberOfPlayers < 1) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(1)">1 Player</button>
-          <button *ngIf="(numberOfPlayers < 2) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(2)">2 Player</button>
-          <button *ngIf="(numberOfPlayers < 3) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(3)">3 Player</button>
-          <button *ngIf="(numberOfPlayers < 4) && numberOfPlayerSelected === false" class="btn btn-info" type="button" (click)="setNumberOfPlayingPlayers(4)">4 Player</button>
 
-          <div *ngIf="(numberOfPlayers >= 1) && numberOfPlayerSelected === true">
-            <label for="player1">Player 1 Name:</label>
-            <input id="player1" [(ngModel)]="playerName1" type="text"/>
+        <div *ngIf="displayView === HOME_SCREEN_VIEW" class="homeView">
+          <div class="continueGame">
+            <button type="button" class="btn btn-outline-orange" (click)="changeDisplayViewToContinueGame()">Continue Game</button>
           </div>
-
-          <div *ngIf="(numberOfPlayers >= 2) && numberOfPlayerSelected === true">
-            <label for="player2">Player 2 Name:</label>
-            <input id="player2" [(ngModel)]="playerName2" type="text"/>
-          </div>
-
-          <div *ngIf="(numberOfPlayers >= 3) && numberOfPlayerSelected === true">
-            <label for="player3">Player 3 Name:</label>
-            <input id="player3" [(ngModel)]="playerName3" type="text"/>
-          </div>
-
-          <div *ngIf="(numberOfPlayers >= 4 && numberOfPlayerSelected === true)">
-            <label for="player4">Player 4 Name:</label>
-            <input id="player4" [(ngModel)]="playerName4" type="text"/>
-          </div>
-          <div *ngIf="(numberOfPlayers >= 1) && numberOfPlayerSelected === true">
-            <button class="primary" id="resetBtn" type="button" (click)="reset()">Reset</button>
+          <div class="newGame">
+            <div>
+              <p>New Game</p>
+            </div>
+            <div class="playernumber">
+              <button *ngIf="(numberOfPlayers < 1) && numberOfPlayerSelected === false" class="btn btn-outline-info" type="button" (click)="setNumberOfPlayingPlayers(1)">1 Player</button>
+              <button *ngIf="(numberOfPlayers < 2) && numberOfPlayerSelected === false" class="btn btn-outline-info" type="button" (click)="setNumberOfPlayingPlayers(2)">2 Player</button>
+              <button *ngIf="(numberOfPlayers < 3) && numberOfPlayerSelected === false" class="btn btn-outline-info" type="button" (click)="setNumberOfPlayingPlayers(3)">3 Player</button>
+              <button *ngIf="(numberOfPlayers < 4) && numberOfPlayerSelected === false" class="btn btn-outline-info" type="button" (click)="setNumberOfPlayingPlayers(4)">4 Player</button>
+            </div>
           </div>
         </div>
-        
-        <div *ngIf="numberOfPlayerSelected === true">
-          <button class="primary" type="button" (click)="startGame()">Play!</button>
+
+        <div *ngIf="displayView === NEW_GAME_PLAYER_NAMES_VIEW" class="newGameView">
+          <div class="playerNames">
+            <div *ngIf="(numberOfPlayers >= 1) && numberOfPlayerSelected === true">
+              <label for="player1">Player 1 Name:</label>
+              <input id="player1" [(ngModel)]="playerName1" type="text"/>
+            </div>
+  
+            <div *ngIf="(numberOfPlayers >= 2) && numberOfPlayerSelected === true">
+              <label for="player2">Player 2 Name:</label>
+              <input id="player2" [(ngModel)]="playerName2" type="text"/>
+            </div>
+  
+            <div *ngIf="(numberOfPlayers >= 3) && numberOfPlayerSelected === true">
+              <label for="player3">Player 3 Name:</label>
+              <input id="player3" [(ngModel)]="playerName3" type="text"/>
+            </div>
+  
+            <div *ngIf="(numberOfPlayers >= 4 && numberOfPlayerSelected === true)">
+              <label for="player4">Player 4 Name:</label>
+              <input id="player4" [(ngModel)]="playerName4" type="text"/>
+            </div>
+            <div *ngIf="(numberOfPlayers >= 1) && numberOfPlayerSelected === true">
+              <button class="primary" id="resetBtn" type="button" (click)="reset()">Reset</button>
+            </div>
+          </div>
+
+          <div *ngIf="numberOfPlayerSelected === true">
+            <button class="primary" type="button" (click)="startGame()">Play!</button>
+          </div>
         </div>
+
+        <div *ngIf="displayView === CONTINUE_GAME_VIEW" class="ContinueGameView">
+          <div class="playerSearch">
+            <label for="player">Player name:</label>
+            <input id="player" #playerNameInput type="text"/>
+            <button type="button" class="btn btn-info" (click)="search(playerNameInput.value)">Search</button>
+          </div>
+          <div class="loadedGames">
+            <!-- table with all continuable games, pickable -->
+            <table>
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Player</th>
+                      <th>Round</th>
+                      <th>Last Play Time</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let runningGame of continuableGames; let i = index">
+                      <td>{{ i + 1 }}</td> 
+                      <td>
+                          <div *ngFor="let player of runningGame.players">
+                              {{ player }}
+                          </div>
+                      </td>
+                      <td>{{ runningGame.round }}</td> 
+                      <td>{{ runningGame.lastPlayedTime }}</td> 
+                  </tr>
+              </tbody>
+          </table>
+          <div>
+            <button type="button" class="primary" id="goBackBtn" (click)="gotToHomeDisplay()">Go Back!</button>
+          </div>
+          </div>
+        </div>
+
         <div *ngIf="errorMessage" class="error-message">
           {{ errorMessage }}
         </div>

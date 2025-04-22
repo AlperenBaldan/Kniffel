@@ -1,5 +1,6 @@
 ﻿using Business.Interfaces;
 using DataContracts.Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,18 @@ namespace Business.Services
             _playerRepository = playerRepository;
         }
 
-        public void InsertDummyData()
+        public Player? GetPlayerById(int id)
         {
-            _playerRepository.InsertDummyData();
+            var player = _playerRepository.GetPlayerById(id);
+            if (player == null)
+            {
+                throw new KeyNotFoundException($"Player with id {id} could not be found.");
+            }
+            else
+            {
+                // mapper wenn später vorhanden
+                return player;
+            }
         }
     }
 }
